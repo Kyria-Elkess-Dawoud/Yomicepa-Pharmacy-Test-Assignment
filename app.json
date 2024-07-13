@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "Yomicepa-Pharmacy-Test-Assignment",
+    "slug": "Yomicepa-Pharmacy-Test-Assignment"
+  }
+}
