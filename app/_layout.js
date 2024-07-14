@@ -1,0 +1,22 @@
+import { Stack } from 'expo-router';
+import ShowReturnRequests from '../components/showReturnRequests/showReturnRequest';
+
+const Layout = () => {
+  return (
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <Stack.Screen name="index" />
+      {/* <Stack.Screen name="showReturnRequest" /> */}
+      {/* <Stack.Screen name="show" component={ShowReturnRequests} /> */}
+    </Stack>
+  );
+};
+export default Layout;
