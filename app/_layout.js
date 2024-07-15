@@ -14,8 +14,7 @@ const Layout = () => {
         },
       }}>
       <Stack.Screen name="index" />
-      {/* <Stack.Screen name="showReturnRequest" /> */}
-      {/* <Stack.Screen name="show" component={ShowReturnRequests} /> */}
+      <Stack.Screen name="showReturnRequest" />
     </Stack>
   );
 };

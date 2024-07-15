@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import ReturnRequest from '../returnRequest/returnRequest';
 import styles from './showReturnRequest.styles';
 import axios from 'axios';
