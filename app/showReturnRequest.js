@@ -22,7 +22,7 @@ import { getAuthToken } from './utils';
   const listReturnRequests = async () => {
 
     if (selectedPharmacy == 194 || selectedPharmacy == 198) {
-      Alert.alert('there is no return requests for this pharmacy!');
+      Alert.alert('there is no return requests for this pharmacy! kindly select another pharmacy');
       return;
     }
 

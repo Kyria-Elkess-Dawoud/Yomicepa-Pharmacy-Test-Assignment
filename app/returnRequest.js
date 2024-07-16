@@ -22,17 +22,20 @@ const ReturnRequest = ({ request, pharmacyId }) => {
       <View>
         <Text style={styles.text}>ID: {request.id}</Text>
         <Text style={styles.text}>Created At: {request.createdAt}</Text>
-        <Text style={styles.text}>Number of Items: {request.items}</Text>
+        
+        <View style={styles.itemsRow}>
+          <Text style={styles.text}>Number of Items: {request.items}</Text>
+            <TouchableOpacity style={styles.showButton} onPress={handleItems}>
+              <Text style={styles.showButtonText}>Show</Text>
+            </TouchableOpacity>
+        </View>
+        
         <Text style={styles.text}>Status: {request.status}</Text>
         <Text style={styles.text}>Service Type: {request.serviceType}</Text>
         <Text style={styles.text}>Associated Wholesaler: {request.associatedWholesaler}</Text>
       </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.itemsButton} onPress={() => handleItems()}>
-          <Text style={styles.addButtonText}>items</Text>
-        </TouchableOpacity>
-        
+      <View style={styles.buttonContainer}> 
         <TouchableOpacity style={styles.addButton} onPress={() => handleAdd()}>
           <Text style={styles.addButtonText}>add item</Text>
         </TouchableOpacity>
