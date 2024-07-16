@@ -12,6 +12,10 @@ const ReturnRequest = ({ request, pharmacyId }) => {
     navigation.navigate('listItem', { returnRequestId: request.id, pharmacyId: pharmacyId });
   };
 
+  const handleAdd = async () => {
+    navigation.navigate('addItem', { returnRequestId: request.id, pharmacyId: pharmacyId });
+  };
+
   return (
     <View style={styles.container}>
       <Image source={{myImage}} style={styles.icon} />
@@ -23,9 +27,16 @@ const ReturnRequest = ({ request, pharmacyId }) => {
         <Text style={styles.text}>Service Type: {request.serviceType}</Text>
         <Text style={styles.text}>Associated Wholesaler: {request.associatedWholesaler}</Text>
       </View>
-      <TouchableOpacity style={styles.addButton} onPress={() => handleItems()}>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.itemsButton} onPress={() => handleItems()}>
           <Text style={styles.addButtonText}>items</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.addButton} onPress={() => handleAdd()}>
+          <Text style={styles.addButtonText}>add item</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
