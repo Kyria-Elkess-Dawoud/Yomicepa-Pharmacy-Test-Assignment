@@ -7,7 +7,7 @@ import styles from './showReturnRequest.styles';
 
 import api from '../api/api';
 import { useNavigation } from '@react-navigation/native';
-import { getAuthToken } from './utile';
+import { getAuthToken } from './utils';
 
  const ShowReturnRequests = () => {
 
