@@ -7,7 +7,7 @@ import styles from './showReturnRequest.styles';
 
 import api from '../api/api';
 import { useNavigation } from '@react-navigation/native';
-import { listPharmacies, getAuthToken } from './utile';
+import { getAuthToken } from './utile';
 
  const ShowReturnRequests = () => {
 
@@ -86,11 +86,11 @@ import { listPharmacies, getAuthToken } from './utile';
         />
         
         <Text style={styles.title}>      Return Requests:</Text>
-        {returnRequestContent.length > 0 ? (
+        {returnRequestContent.length && returnRequestContent.length > 0 ? (
           <FlatList
             data={returnRequestContent}
             keyExtractor={(item) => item.returnRequest.id.toString()}
-            renderItem={({ item }) => <ReturnRequest request={item.returnRequest} />}
+            renderItem={({ item }) => <ReturnRequest request={item.returnRequest} pharmacyId={selectedPharmacy}/>}
           />
         ) : (
           <Text style={styles.title}>No return requests found</Text>

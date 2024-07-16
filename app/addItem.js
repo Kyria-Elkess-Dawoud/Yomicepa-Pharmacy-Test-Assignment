@@ -1,5 +1,5 @@
 import { COLORS } from "../constants";
-import { listPharmacies, getAuthToken, listReturnRequests } from './utile';
+import { getAuthToken } from './utile';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import api from "../api/api";
 
@@ -94,6 +94,7 @@ const AddItem = () => {
   };
 
   const handleGoToItems = () => {
+    console.log('pharmmmmm id for add item screen: ', pharmacyId);
     navigation.navigate('listItem', { returnRequestId: returnRequestId, pharmacyId: pharmacyId});
       //, itemId: itemId});
   };

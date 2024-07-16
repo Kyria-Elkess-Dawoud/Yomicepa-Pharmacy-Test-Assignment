@@ -5,7 +5,7 @@ import styles from './listItem.styles';
 
 import api from '../api/api';
 import { useRoute } from '@react-navigation/native';
-import { listPharmacies, getAuthToken, listReturnRequests } from './utile';
+import { getAuthToken } from './utile';
 
  const ListItems = () => {
 
@@ -18,6 +18,8 @@ import { listPharmacies, getAuthToken, listReturnRequests } from './utile';
 
   useEffect(() => {
     const listItemsInReturnRequest = async () => {
+      console.log('returnnnnn: ', returnRequestId);
+      console.log('pharmmmmm: ', pharmacyId);
       try {
         const token = await getAuthToken();
         if (!token) {
@@ -30,6 +32,7 @@ import { listPharmacies, getAuthToken, listReturnRequests } from './utile';
           },
         });
     
+        
         setlistItemInfo(response.data);
         console.log(' items in return request: ', response.data);
         return response.data;
@@ -39,17 +42,18 @@ import { listPharmacies, getAuthToken, listReturnRequests } from './utile';
     };
 
     listItemsInReturnRequest();
+    console.log(' item id:', listItemInfo.id);
   }, []);
 
     return (
       <View style={styles.container}>
         {/* Render items data */}
-        <Text style={styles.title}>Items info</Text>
+        <Text style={styles.title}>Items info:</Text>
         {listItemInfo.length > 0 ? (
           <FlatList
             data={listItemInfo}
             keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => <ItemComponent info={item} />}
+            renderItem={({ item }) => <ItemComponent info={item} returnRequestId={returnRequestId} pharmacyId={pharmacyId}/>}
           />
         ) : (
           <Text style={styles.title}>No items found</Text>

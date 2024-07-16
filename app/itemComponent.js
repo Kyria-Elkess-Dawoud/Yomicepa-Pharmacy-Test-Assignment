@@ -1,11 +1,27 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import myImage from '../assets/item.png';
 import styles from './itemComponent.styles';
+import { getAuthToken } from './utile';
+import api from '../api/api';
 
-const ItemComponent = ({ info }) => {
+const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
 
-  const handleDelete = async (pharmacyId, returnRequestId, itemId) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newDescription, setNewDescription] = useState(info.description);
+
+  const [itemId, setitemId] = useState('');
+
+  useEffect(() => {
+
+    const retrieveData = async () => {
+      setitemId(info.id)
+    };
+
+    retrieveData();
+  }, []);
+
+  const handleDelete = async () => {
     try {
       const token = await getAuthToken();
       if (!token) {
@@ -19,19 +35,22 @@ const ItemComponent = ({ info }) => {
       });
   
       console.log('delete item in return request', response.data);
+      Alert.alert('item deleted successfully!');
       return response.data;
     } catch (error) {
       console.error('Error deleting item in return request:', error);
     }
   };
 
-  const handleUpdateDescription = async (pharmacyId, returnRequestId, itemId, updatedItemData) => {
+  const handleUpdateDescription = async (updatedItemData) => {
     try {
       const token = await getAuthToken();
       if (!token) {
         throw new Error('No access token found');
       }
   
+
+      const updatedItemData = { ...info, description: newDescription };
       const response = await api.put(`/pharmacies/${pharmacyId}/returnrequests/${returnRequestId}/items/${itemId}`, updatedItemData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -40,11 +59,13 @@ const ItemComponent = ({ info }) => {
       });
   
       console.log('update item in return request: ', response.data);
+      Alert.alert('item updated successfully!');
       return response.data;
     } catch (error) {
       console.error('Error updating item in return request:', error);
     }
   };
+
 
   return (
     <View style={styles.container}>
@@ -59,13 +80,14 @@ const ItemComponent = ({ info }) => {
         <Text style={styles.text}>Lot number: {info.lotNumber}</Text>
       </View>
 
-      <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete(info.id)}>
-            <Text style={styles.deleteButtonText}>Delete</Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete()}>
+          <Text style={styles.deleteButtonText}>Delete</Text>
+      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.editButton} onPress={() => handleUpdateDescription(info.id)}>
-            <Text style={styles.editButtonText}>edit the description</Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={styles.editButton} onPress={() => handleUpdateDescription()}>
+          <Text style={styles.editButtonText}>edit the description</Text>
+      </TouchableOpacity>
+
     </View>
   );
 };

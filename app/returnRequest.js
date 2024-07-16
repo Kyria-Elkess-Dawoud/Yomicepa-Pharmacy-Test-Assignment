@@ -4,12 +4,12 @@ import myImage from '../assets/return.png';
 import styles from './returnRequest.styles';
 import { useNavigation } from '@react-navigation/native';
 
-const ReturnRequest = ({ request }) => {
+const ReturnRequest = ({ request, pharmacyId }) => {
 
   const navigation = useNavigation();
 
-  const handleItems = async (requestId) => {
-    navigation.navigate('listItem', { returnRequestId: requestId });
+  const handleItems = async () => {
+    navigation.navigate('listItem', { returnRequestId: request.id, pharmacyId: pharmacyId });
   };
 
   return (
@@ -23,7 +23,7 @@ const ReturnRequest = ({ request }) => {
         <Text style={styles.text}>Service Type: {request.serviceType}</Text>
         <Text style={styles.text}>Associated Wholesaler: {request.associatedWholesaler}</Text>
       </View>
-      <TouchableOpacity style={styles.addButton} onPress={() => handleItems(request.id)}>
+      <TouchableOpacity style={styles.addButton} onPress={() => handleItems()}>
           <Text style={styles.addButtonText}>items</Text>
         </TouchableOpacity>
     </View>

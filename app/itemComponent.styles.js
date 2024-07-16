@@ -3,12 +3,12 @@ import { COLORS, FONT, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
-    height: 270,
+    width: 420,
+    height: 170,
     flexDirection: 'row',
     padding: 10,
     marginBottom: 10,
-    borderRadius: 10,
+    borderRadius: 20,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.gray2,
     backgroundColor: COLORS.gray2,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     width: '20%',
-    height: '30%',
+    height: '25%',
     //flexDirection: 'row',
     alignContent: 'center',
     alignItems: 'center',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   editButton: {
     width: '20%',
-    height: '30%',
+    height: '25%',
     flexDirection: 'column',
     alignContent: 'center',
     alignItems: 'center',
