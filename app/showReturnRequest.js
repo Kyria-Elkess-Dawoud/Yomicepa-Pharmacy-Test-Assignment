@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text, ScrollView, Alert } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 import ReturnRequest from './returnRequest';
@@ -67,6 +67,12 @@ import { getAuthToken } from './utils';
   }, []);
 
   const handleCreateRequest = () => {
+
+    if (!selectedPharmacy) {
+      Alert.alert('Please select a pharmacy!');
+      return;
+    }
+
     navigation.navigate('createReturnRequest', { pharmacyId: selectedPharmacy });
   }
 

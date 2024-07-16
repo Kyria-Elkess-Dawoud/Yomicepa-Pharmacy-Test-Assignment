@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import api from '../api/api';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -79,6 +79,11 @@ const CreateReturnRequest = () => {
   ];
 
   const handleSubmit = async () => {
+
+    if (!serviceType || !selectedWholesaler) {
+      Alert.alert('Please select one option for each field!');
+      return;
+    }
 
     console.log(' pharmacy id for create return request screen:', pharmacyId);
     const response = await createReturnRequest(serviceType, selectedWholesaler);
