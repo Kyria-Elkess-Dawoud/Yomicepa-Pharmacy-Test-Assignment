@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import myImage from '../assets/item.png';
 import styles from './itemComponent.styles';
-import { getAuthToken } from './utile';
+import { getAuthToken } from './utils';
 import api from '../api/api';
 
 const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [newDescription, setNewDescription] = useState(info.description);
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [newDescription, setNewDescription] = useState(info.description);
 
   const [itemId, setitemId] = useState('');
 
@@ -82,10 +82,6 @@ const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
 
       <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete()}>
           <Text style={styles.deleteButtonText}>Delete</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.editButton} onPress={() => handleUpdateDescription()}>
-          <Text style={styles.editButtonText}>edit the description</Text>
       </TouchableOpacity>
 
     </View>

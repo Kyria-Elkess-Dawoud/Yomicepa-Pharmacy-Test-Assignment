@@ -5,7 +5,7 @@ import styles from './listItem.styles';
 
 import api from '../api/api';
 import { useRoute } from '@react-navigation/native';
-import { getAuthToken } from './utile';
+import { getAuthToken } from './utils';
 
  const ListItems = () => {
 
@@ -18,8 +18,8 @@ import { getAuthToken } from './utile';
 
   useEffect(() => {
     const listItemsInReturnRequest = async () => {
-      console.log('returnnnnn: ', returnRequestId);
-      console.log('pharmmmmm: ', pharmacyId);
+      console.log('return request id for list item screen: ', returnRequestId);
+      console.log('pharmacy id for list item screen: ', pharmacyId);
       try {
         const token = await getAuthToken();
         if (!token) {
@@ -47,7 +47,6 @@ import { getAuthToken } from './utile';
 
     return (
       <View style={styles.container}>
-        {/* Render items data */}
         <Text style={styles.title}>Items info:</Text>
         {listItemInfo.length > 0 ? (
           <FlatList

@@ -32,8 +32,6 @@ export const listPharmacies = async () => {
   }
 };
 
-///////idk how i feel about them
-
 export const listReturnRequests = async (pharmacyId) => {
     try {
       const token = await getAuthToken();
@@ -47,10 +45,8 @@ export const listReturnRequests = async (pharmacyId) => {
         },
       });
   
-      //setReturnRequestsInfo(response.data);
       console.log('list return requests: ', response.data);
 
-      //setReturnRequestContent(response.data.content);
       return response.data.content;
     } catch (error) {
       console.error('Error fetching return requests:', error);
@@ -70,7 +66,6 @@ export const getPharmacy = async (pharmacyId) => {
         },
       });
   
-      //setGetPharmacyInfo(response.data)
       console.log('get pharmacy info : ', response.data);
       return response.data;
     } catch (error) {

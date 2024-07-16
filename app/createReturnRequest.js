@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import styles from './createReturnRequest.styles';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { getAuthToken } from './utile';
+import { getAuthToken } from './utils';
 
 const CreateReturnRequest = () => {
 
@@ -80,12 +80,12 @@ const CreateReturnRequest = () => {
 
   const handleSubmit = async () => {
 
-    console.log('my pharmacy id :', pharmacyId);
+    console.log(' pharmacy id for create return request screen:', pharmacyId);
     const response = await createReturnRequest(serviceType, selectedWholesaler);
       if (response) {
         navigation.navigate('addItem', { returnRequestId: response.id, pharmacyId: pharmacyId});
       }
-      console.log('my return request id :', response.id);
+      console.log('return request id create return request screen:', response.id);
   };
 
 

@@ -20,7 +20,7 @@ import { getAuthToken } from './utile';
   
 
   const listReturnRequests = async () => {
-    console.log('idddd isss: ', selectedPharmacy);
+    console.log('pharmacy id for show return requests screen: ', selectedPharmacy);
     try {
       const token = await getAuthToken();
       if (!token) {
@@ -35,7 +35,7 @@ import { getAuthToken } from './utile';
       
 
       setReturnRequestContent(response.data.content);
-      console.log('list return requests2222: ', returnRequestContent);
+      console.log('list return requests: ', returnRequestContent);
       return response.data.content;
     } catch (error) {
       console.error('Error fetching return requests:', error);
@@ -86,7 +86,7 @@ import { getAuthToken } from './utile';
         />
         
         <Text style={styles.title}>      Return Requests:</Text>
-        {returnRequestContent.length && returnRequestContent.length > 0 ? (
+        {returnRequestContent.length > 0 ? (
           <FlatList
             data={returnRequestContent}
             keyExtractor={(item) => item.returnRequest.id.toString()}
