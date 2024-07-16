@@ -1,5 +1,4 @@
 import { Stack } from 'expo-router';
-import ShowReturnRequests from '../components/showReturnRequests/showReturnRequest';
 
 const Layout = () => {
   return (
@@ -15,6 +14,9 @@ const Layout = () => {
       }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="showReturnRequest" />
+      <Stack.Screen name="createReturnRequest" />
+      <Stack.Screen name="addItem" />
+      <Stack.Screen name="listItem" />
     </Stack>
   );
 };

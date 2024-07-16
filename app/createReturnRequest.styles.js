@@ -5,11 +5,13 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       padding: 20,
-      backgroundColor: COLORS.white,
+      backgroundColor: COLORS.pastelBlue,
     },
     label: {
-      fontSize: 16,
-      marginBottom: 10,
+      fontSize: 18,
+      marginBottom: 20,
+      marginTop: 20,
+      fontWeight: 'bold',
     },
     placeholderStyle: {
       height: 50,
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
       padding: 15,
       borderRadius: 5,
       alignItems: 'center',
+      marginTop: 50,
     },
     buttonText: {
       color: COLORS.white,

@@ -1,16 +1,17 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../constants";
+import { COLORS, FONT, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
   container: {
     width: 400,
-    height: 140,
+    height: 270,
     flexDirection: 'row',
     padding: 10,
-    marginBottom: 5,
-    borderBottomWidth: 1,
+    marginBottom: 10,
     borderRadius: 10,
-    backgroundColor: COLORS.darkerWhite,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.gray2,
+    backgroundColor: COLORS.gray2,
   },
   icon: {
     width: '20%',
@@ -24,9 +25,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginLeft: 5,
-    color: COLORS.black,
+    color: COLORS.navyBlue,
   },
-  addButton: {
+  deleteButton: {
     width: '20%',
     height: '30%',
     //flexDirection: 'row',
@@ -37,11 +38,27 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: COLORS.navyBlue,
   },
-  addButtonText: {
+  deleteButtonText: {
     fontWeight: 'bold',
     fontSize: 10,
     color: COLORS.white,
-  }
+  },
+  editButton: {
+    width: '20%',
+    height: '30%',
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderRadius: 10,
+    backgroundColor: COLORS.navyBlue,
+  },
+  editButtonText: {
+    fontWeight: 'bold',
+    fontSize: 10,
+    color: COLORS.white,
+  },
 });
 
 export default styles;

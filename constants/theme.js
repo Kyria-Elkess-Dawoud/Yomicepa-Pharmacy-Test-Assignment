@@ -11,6 +11,9 @@ const COLORS = {
     white: "#ffffff",
     lightWhite: "#FAFAFC",
 
+    lightPastelYellow: "#FFFFE0",
+    softPastelYellow: "#FFFACD",
+
     blue: "#0000FF",
     lightBlue: "#007BFF",
     pastelBlue: "#AEC6CF",

@@ -1,46 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import api from '../api/api';
+
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import styles from './createReturnRequest.styles';
-import SelectList from 'react-native-dropdown-select-list';
+import { SelectList } from 'react-native-dropdown-select-list';
+import { getAuthToken } from './utile';
 
 const CreateReturnRequest = () => {
+
   const [serviceType, setServiceType] = useState('');
-  const [wholesaler, setWholesaler] = useState('');
+
+  const [wholesalersForPharmacy, setWholesalersForPharmacy] = useState([]);
+  const [selectedWholesaler, setSelectedWholesaler] = useState('');
+
+
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const { pharmacyId } = route.params;
+
+
+  useEffect(() => {
+    const listWholesalersForPharmacy = async () => {
+      try {
+        const token = await getAuthToken();
+        if (!token) {
+          throw new Error('No access token found');
+        }
+    
+        const response = await api.get(`/pharmacies/${pharmacyId}/wholesalers`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+    
+        setWholesalersForPharmacy(response.data)
+        console.log('wholesalers for pharmacy : ', response.data);
+        return response.data;
+      } catch (error) {
+        console.error('Error fetching wholesalers for pharmacy:', error);
+      }
+    };
+
+    listWholesalersForPharmacy();
+  }, []);
+
+  const createReturnRequest = async (serviceTypeSelect, wholesalerId) => {
+    try {
+      const token = await getAuthToken();
+      if (!token) {
+        throw new Error('No access token found');
+      }
+  
+      const requestBody = {
+        serviceType: serviceTypeSelect,
+        wholesalerId: wholesalerId,
+      };
+  
+      const response = await api.post(`/pharmacies/${pharmacyId}/returnrequests`, requestBody, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      console.log('create return request info: ', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating return request:', error);
+    }
+  };
 
   const serviceTypesList = [
     {key: '1', value: 'EXPRESS_SERVICE'},
     {key: '2', value: 'FULL_SERVICE'},
   ];
 
-  const fetchWholesalers = async () => {
-    try {
-      const response = await fetch('https://portal-test.rxmaxreturns.com/rxmax.json');
-      const json = await response.json();
-      
-      const wholesalers = json.map(movie => ({
-        name: movie.title,
-        address: movie.address,
-        // Add more fields as needed based on your JSON structure
-      }));
-      
-      // Now 'wholesalers' array contains the list of wholesalers
-      console.log(wholesalers);
-      return wholesalers;
-    } catch (error) {
-      console.error(error);
-      return []; // Return an empty array or handle error as needed
-    }
-  };
+  const handleSubmit = async () => {
 
-  const handleSubmit = () => {
-    //created
-    //go to add item screen
-  }
+    console.log('my pharmacy id :', pharmacyId);
+    const response = await createReturnRequest(serviceType, selectedWholesaler);
+      if (response) {
+        navigation.navigate('addItem', { returnRequestId: response.id, pharmacyId: pharmacyId});
+      }
+      console.log('my return request id :', response.id);
+  };
 
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.label}>Service Type:</Text>
         <SelectList
             setSelected={setServiceType}
@@ -49,11 +100,14 @@ const CreateReturnRequest = () => {
             searchPlaceholder="Search..."
         />
 
-      <Text style={styles.label}>Wholsaler:</Text>
+      <Text style={styles.label}>Wholesaler:</Text>
         <SelectList
-            setSelected={setWholesaler}
-            data={wholeSalerList}
-            placeholder={"Select wholsaler"}
+            setSelected={setSelectedWholesaler}
+            data={wholesalersForPharmacy.map(wholesaler => ({
+              key: wholesaler.id,
+              value: wholesaler.name,
+            }))}
+            placeholder={"Select wholesaler"}
             searchPlaceholder="Search..."
         />
 

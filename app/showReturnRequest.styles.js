@@ -5,8 +5,9 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      //justifyContent: 'center',
+      //alignItems: 'center',
+      padding: 10,
       backgroundColor: COLORS.pastelBlue,
     },
     title: {
@@ -14,40 +15,29 @@ const styles = StyleSheet.create({
       textDecorationLine: 'underline',
       fontWeight: FONT.bold,
       marginBottom: SIZES.medium,
+      marginLeft: 90,
     },
     createButton: {
       width: 300,
       height: 50,
       padding: 15,
-      backgroundColor: COLORS.lightBlue,
+      backgroundColor: COLORS.primary,
       borderRadius: 5,
       alignItems: 'center',
+      marginBottom: 10,
+      marginLeft: 70,
     },
     createButtonText: {
       color: COLORS.white,
       fontSize: 16,
       fontWeight: 'bold',
     },
-    flatListContent: {
-      paddingBottom: 20,
-    },
-    returnRequestContainer: {
-      padding: SIZES.small,
-      backgroundColor: COLORS.white,
-      borderRadius: SIZES.small,
-      marginBottom: SIZES.small,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.3,
-      shadowRadius: 1,
-    },
-    returnRequestText: {
-      fontSize: SIZES.medium,
-    },
-    text: {
-      fontSize: 12,
-      color: COLORS.purple,
-      marginBottom: 5,
+    label: {
+      width: "500%",
+      fontSize: 18,
+      marginBottom: 20,
+      marginTop: 5,
+      fontWeight: 'bold',
     },
   });
 

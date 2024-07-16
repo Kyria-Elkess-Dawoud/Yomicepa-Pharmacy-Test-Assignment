@@ -1,21 +1,31 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import myImage from '../assets/return.png';
 import styles from './returnRequest.styles';
+import { useNavigation } from '@react-navigation/native';
 
 const ReturnRequest = ({ request }) => {
-  //number of items can be clicked on to go to list Items
+
+  const navigation = useNavigation();
+
+  const handleItems = async (requestId) => {
+    navigation.navigate('listItem', { returnRequestId: requestId });
+  };
+
   return (
     <View style={styles.container}>
       <Image source={{myImage}} style={styles.icon} />
-      <View style={styles.infoContainer}>
+      <View>
         <Text style={styles.text}>ID: {request.id}</Text>
         <Text style={styles.text}>Created At: {request.createdAt}</Text>
-        <Text style={styles.text}>Items: {request.items}</Text>
+        <Text style={styles.text}>Number of Items: {request.items}</Text>
         <Text style={styles.text}>Status: {request.status}</Text>
         <Text style={styles.text}>Service Type: {request.serviceType}</Text>
         <Text style={styles.text}>Associated Wholesaler: {request.associatedWholesaler}</Text>
       </View>
+      <TouchableOpacity style={styles.addButton} onPress={() => handleItems(request.id)}>
+          <Text style={styles.addButtonText}>items</Text>
+        </TouchableOpacity>
     </View>
   );
 };

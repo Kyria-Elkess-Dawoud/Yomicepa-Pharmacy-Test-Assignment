@@ -1,4 +1,4 @@
-import { COLORS, FONT, SIZES } from "../../constants";
+import { COLORS } from "../constants";
 
 import { StyleSheet } from 'react-native';
 
@@ -7,42 +7,46 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 170,
+    padding: 20,
     backgroundColor: COLORS.pastelBlue,
   },
-  logo: {
-    width: 200,
-    height: 200,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: COLORS.gray,
-  },
-  welcomeText: {
-    width: '500%',
+  addItemText: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 50,
+    marginBottom: 20,
     color: COLORS.black,
   },
   input: {
-    width: '500%',
+    width: '100%',
     padding: 10,
-    marginBottom: 40,
-    borderWidth: 2,
+    marginBottom: 10,
+    borderWidth: 1,
     borderColor: COLORS.gray2,
     borderRadius: 5,
     backgroundColor: COLORS.white,
   },
-  loginButton: {
-    width: '500%',
+  AddButton: {
+    width: '100%',
     padding: 15,
+    marginBottom: 10,
     backgroundColor: COLORS.lightBlue,
-    marginTop: 5,
     borderRadius: 5,
     alignItems: 'center',
   },
-  loginButtonText: {
+  AddButtonText: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  GoToItemsButton: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: COLORS.lightBlue,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  GoToItemsButtonText: {
     color: COLORS.white,
     fontSize: 16,
     fontWeight: 'bold',

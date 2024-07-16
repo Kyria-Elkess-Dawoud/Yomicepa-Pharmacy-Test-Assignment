@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { COLORS } from "../../constants";
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import styles from './login.styles';
 import myImage from '../../assets/pharmacyLogo.png';
 import { useNavigation } from '@react-navigation/native';
@@ -14,13 +14,16 @@ const Login = () => {
   const navigation = useNavigation();
 
   const handleLogin = async (username, password) => {
-    const token = await getBearerToken(username, password);
-    if (token) {
-      
-      navigation.navigate('showReturnRequest');
-      //router.push('/showReturnRequest');
-    } else {
-      Alert.alert('Login failed', 'Please check your credentials and try again.');
+    try {
+      const token = await getBearerToken(username, password);
+      if (token) {
+        navigation.navigate('showReturnRequest');
+      } else {
+        Alert.alert('Login failed', 'Please check your credentials and try again.');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      Alert.alert('Login Error', 'An unexpected error occurred during login. Please try again later.');
     }
   };
 
@@ -45,7 +48,7 @@ const Login = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-
+      
       <TouchableOpacity style={styles.loginButton} onPress={() => handleLogin(username, password)}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
