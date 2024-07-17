@@ -75,7 +75,7 @@ const AddItem = () => {
 
   const handleAdd = async () => {
 
-    if (!(ndc || description || manufacturer || fullQuantity || partialQuantity || expirationDate || lotNumber)) {
+    if (!ndc || !description || !manufacturer || !fullQuantity || !partialQuantity || !expirationDate || !lotNumber) {
       Alert.alert('Please fill input for each field!');
       return;
     }
