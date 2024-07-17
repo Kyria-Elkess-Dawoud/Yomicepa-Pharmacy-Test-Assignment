@@ -9,9 +9,8 @@ import Login from '../components';
 const Home = () => {
   const router = useRouter();
 
-  //LOOOGGGGIIINNNNN
   return (
-     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.gray2 }}>
+     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.pastelBlue }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: SIZES.small }}>
           <Login/>

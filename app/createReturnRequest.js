@@ -4,9 +4,9 @@ import api from '../api/api';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import styles from './createReturnRequest.styles';
+import styles from '../styles/createReturnRequest.styles';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { getAuthToken } from './utils';
+import { getAuthToken } from '../utils/getAuthToken';
 
 const CreateReturnRequest = () => {
 

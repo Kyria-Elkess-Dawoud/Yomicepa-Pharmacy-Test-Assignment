@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../constants";
+import { COLORS } from "../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -12,13 +12,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: COLORS.darkerWhite,
   },
-  icon: {
-    width: '20%',
+  imageContainer: {
+    width: '26%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
-    borderWidth: 2,
+    borderWidth: 1,
     marginLeft: -7,
-    borderColor: COLORS.gray,
+  },
+  detailsContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
   text: {
     fontWeight: 'bold',
@@ -27,8 +36,8 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
   addButton: {
-    width: '100%',
-    height: '30%',
+    width: '80%',
+    height: '25%',
     alignContent: 'center',
     alignItems: 'center',
     padding: 10,
@@ -38,7 +47,7 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     fontWeight: 'bold',
-    fontSize: 10,
+    fontSize: 9,
     color: COLORS.white,
   },
   showButton: {
@@ -53,18 +62,21 @@ const styles = StyleSheet.create({
   },
   showButtonText: {
     fontWeight: 'bold',
-    fontSize: 8,
-    color: COLORS.white,
+    fontSize: 10,
+    color: COLORS.black,
+    textDecorationLine: 'underline',
   },
   buttonContainer: {
+    position: 'absolute',
+    top: 5,
+    right: -10,
     width: '20%',
     height: '100%',
-    justifyContent: 'space-between',
   },
   itemsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5, // Adjust this value if needed
+    marginTop: 5,
   },
 });
 

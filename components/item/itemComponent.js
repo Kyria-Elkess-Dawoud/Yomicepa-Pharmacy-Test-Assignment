@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
-import myImage from '../assets/item.png';
+import { View, Text, Image, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { COLORS } from "../../constants";
+import myImage from '../../assets/itemImage.jpeg';
 import styles from './itemComponent.styles';
-import { getAuthToken } from './utils';
-import api from '../api/api';
+import { getAuthToken } from '../../utils/getAuthToken';
+import api from '../../api/api';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
 
-  // const [isEditing, setIsEditing] = useState(false);
-  // const [newDescription, setNewDescription] = useState(info.description);
-
   const [itemId, setitemId] = useState('');
+  const [newDescription, setNewDescription] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
 
     const retrieveData = async () => {
-      setitemId(info.id)
+      setitemId(info.id);
+      setNewDescription(info.description);
     };
 
     retrieveData();
@@ -42,7 +44,7 @@ const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
     }
   };
 
-  const handleUpdateDescription = async (updatedItemData) => {
+  const handleUpdateDescription = async () => {
     try {
       const token = await getAuthToken();
       if (!token) {
@@ -66,24 +68,51 @@ const ItemComponent = ({ info, returnRequestId, pharmacyId }) => {
     }
   };
 
+  const editing = () => {
+    return (
+      <View>
+        <TextInput
+        style={styles.input}
+        placeholder="description"
+        placeholderTextColor={COLORS.gray}
+        value={newDescription}
+        onChangeText={setNewDescription}
+      />
+
+        <TouchableOpacity onPress={() => handleUpdateDescription()} style={styles.saveButton}>
+          <Text style={styles.saveButtonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
 
   return (
     <View style={styles.container}>
-      <Image source={{myImage}} style={styles.icon} />
-      <View>
+      <View style={styles.imageContainer}>
+        <Image source={myImage} style={styles.image} />
+      </View>
+      <View style={styles.detailsContainer}>
         <Text style={styles.text}>NDC: {info.ndc}</Text>
-        <Text style={styles.text}>Description: {info.description}</Text>
+        {isEditing ? (
+          editing()
+        ) : (
+          <View style={styles.descriptionRow}>
+            <Text style={styles.text}>Description: {info.description}</Text>
+            <TouchableOpacity onPress={() => setIsEditing(true)}>
+              <Ionicons name="create-outline" size={24} color="blue" style={styles.editIcon} />
+            </TouchableOpacity>
+          </View>
+        )}
         <Text style={styles.text}>Manufacturer: {info.manufacturer}</Text>
         <Text style={styles.text}>Full quantity: {info.fullQuantity}</Text>
         <Text style={styles.text}>Partial quantity: {info.partialQuantity}</Text>
         <Text style={styles.text}>Expiration date: {info.expirationDate}</Text>
         <Text style={styles.text}>Lot number: {info.lotNumber}</Text>
       </View>
-
-      <TouchableOpacity style={styles.deleteButton} onPress={() => handleDelete()}>
-          <Text style={styles.deleteButtonText}>Delete</Text>
+      <TouchableOpacity onPress={handleDelete} style={styles.deleteIcon}>
+        <Ionicons name="trash-outline" size={30} color="red" />
       </TouchableOpacity>
-
     </View>
   );
 };

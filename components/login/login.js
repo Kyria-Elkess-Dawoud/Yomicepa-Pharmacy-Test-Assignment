@@ -5,7 +5,7 @@ import styles from './login.styles';
 import myImage from '../../assets/pharmacyLogo.png';
 import { useNavigation } from '@react-navigation/native';
 import { Link, router } from 'expo-router';
-import getBearerToken from '../../app/getToken';
+import getBearerToken from '../../utils/getBearerToken';
 
 const Login = () => {
   const [username, setUsername] = useState('');

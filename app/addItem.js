@@ -1,5 +1,5 @@
 import { COLORS } from "../constants";
-import { getAuthToken } from './utils';
+import { getAuthToken } from '../utils/getAuthToken';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import api from "../api/api";
 
@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'react-native';
 
-import styles from './addItem.styles';
+import styles from '../styles/addItem.styles';
 
 const AddItem = () => {
 
@@ -101,7 +101,6 @@ const AddItem = () => {
   const handleGoToItems = () => {
     console.log('pharmacy id for add item screen: ', pharmacyId);
     navigation.navigate('listItem', { returnRequestId: returnRequestId, pharmacyId: pharmacyId});
-      //, itemId: itemId});
   };
 
   return (

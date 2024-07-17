@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, TouchableOpacity, Text, ScrollView } from 'react-native';
-import ItemComponent from './itemComponent';
-import styles from './listItem.styles';
-
+import ItemComponent from '../components/item/itemComponent';
+import styles from '../styles/listItem.styles';
 import api from '../api/api';
 import { useRoute } from '@react-navigation/native';
-import { getAuthToken } from './utils';
+import { getAuthToken } from '../utils/getAuthToken';
+import { useNavigation } from '@react-navigation/native';
 
  const ListItems = () => {
+
+  const navigation = useNavigation();
 
   const [listItemInfo, setlistItemInfo] = useState([]);
 
   const route = useRoute();
 
-  const { returnRequestId, pharmacyId } = route.params;//m3ahom itemId
+  const { returnRequestId, pharmacyId } = route.params;
+
+  const handleReturnRequestScreen = () => {
+
+    navigation.navigate('showReturnRequest');
+  }
 
 
   useEffect(() => {
@@ -57,6 +64,10 @@ import { getAuthToken } from './utils';
         ) : (
           <Text style={styles.title}>No items found</Text>
         )}
+
+        <TouchableOpacity style={styles.createButton} onPress={() => handleReturnRequestScreen()}>
+          <Text style={styles.createButtonText}>Go to Return Requests Screen</Text>
+        </TouchableOpacity>
       </View>
     );
   };

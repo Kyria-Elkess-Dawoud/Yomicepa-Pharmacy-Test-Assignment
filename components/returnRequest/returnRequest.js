@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import myImage from '../assets/return.png';
+import myImage from '../../assets/returnRequestImage.jpeg';
 import styles from './returnRequest.styles';
 import { useNavigation } from '@react-navigation/native';
 
@@ -18,14 +18,16 @@ const ReturnRequest = ({ request, pharmacyId }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={{myImage}} style={styles.icon} />
-      <View>
+      <View style={styles.imageContainer}>
+        <Image source={myImage} style={styles.image} />
+      </View>
+      <View style={styles.detailsContainer}>
         <Text style={styles.text}>ID: {request.id}</Text>
         <Text style={styles.text}>Created At: {request.createdAt}</Text>
         
         <View style={styles.itemsRow}>
           <Text style={styles.text}>Number of Items: {request.items}</Text>
-            <TouchableOpacity style={styles.showButton} onPress={handleItems}>
+            <TouchableOpacity onPress={handleItems}>
               <Text style={styles.showButtonText}>Show</Text>
             </TouchableOpacity>
         </View>
@@ -37,7 +39,7 @@ const ReturnRequest = ({ request, pharmacyId }) => {
 
       <View style={styles.buttonContainer}> 
         <TouchableOpacity style={styles.addButton} onPress={() => handleAdd()}>
-          <Text style={styles.addButtonText}>add item</Text>
+          <Text style={styles.addButtonText}>Add Item</Text>
         </TouchableOpacity>
       </View>
     </View>

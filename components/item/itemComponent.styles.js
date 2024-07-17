@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS, FONT, SIZES } from "../constants";
+import { COLORS } from "../../constants";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,18 +8,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     marginBottom: 10,
-    borderRadius: 20,
+    borderRadius: 10,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.gray2,
-    backgroundColor: COLORS.gray2,
+    borderBottomColor: COLORS.black,
+    backgroundColor: COLORS.white,
+    position: 'relative',
   },
-  icon: {
-    width: '20%',
+  imageContainer: {
+    width: '27%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 20,
-    borderWidth: 2,
-    marginLeft: -7,
-    borderColor: COLORS.gray,
+    marginLeft: -5,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    //resizeMode: 'contain'
   },
   text: {
     fontWeight: 'bold',
@@ -30,7 +36,6 @@ const styles = StyleSheet.create({
   deleteButton: {
     width: '20%',
     height: '25%',
-    //flexDirection: 'row',
     alignContent: 'center',
     alignItems: 'center',
     padding: 10,
@@ -58,6 +63,42 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 10,
     color: COLORS.white,
+  },
+  detailsContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  descriptionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  deleteIcon: {
+    position: 'absolute',
+    top: 4,
+    right: 5,
+  },
+  editIcon: {
+    marginLeft: 5,
+    marginBottom: 5,
+  },
+  input: {
+    width: '100%',
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: COLORS.gray2,
+    borderRadius: 5,
+    backgroundColor: COLORS.white,
+  },
+  saveButton: {
+    backgroundColor: COLORS.navyBlue,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  saveButtonText: {
+    color: COLORS.white,
+    fontWeight: 'bold',
   },
 });
 

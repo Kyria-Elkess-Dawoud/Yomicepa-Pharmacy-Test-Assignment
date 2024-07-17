@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, FlatList, TouchableOpacity, Text, ScrollView, Alert } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
-import ReturnRequest from './returnRequest';
-import styles from './showReturnRequest.styles';
+import ReturnRequest from '../components/returnRequest/returnRequest';
+import styles from '../styles/showReturnRequest.styles';
 
 import api from '../api/api';
 import { useNavigation } from '@react-navigation/native';
-import { getAuthToken } from './utils';
+import { getAuthToken } from '../utils/getAuthToken';
 
  const ShowReturnRequests = () => {
 

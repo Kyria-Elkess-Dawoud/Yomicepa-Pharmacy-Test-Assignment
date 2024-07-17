@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack } from 'expo-router';
 
 const Layout = () => {
@@ -11,13 +12,15 @@ const Layout = () => {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-      }}>
+      }}
+    >
       <Stack.Screen name="index" />
-      <Stack.Screen name="showReturnRequest" />
-      <Stack.Screen name="createReturnRequest" />
-      <Stack.Screen name="addItem" />
+      <Stack.Screen name="showReturnRequest"/>
+      <Stack.Screen name="createReturnRequest"/>
+      <Stack.Screen name="addItem"/>
       <Stack.Screen name="listItem" />
     </Stack>
   );
 };
+
 export default Layout;

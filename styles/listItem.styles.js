@@ -5,17 +5,34 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      //justifyContent: 'center',
-      //alignItems: 'center',
-      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
       backgroundColor: COLORS.pastelBlue,
     },
     title: {
-      fontSize: 24,
-      textDecorationLine: 'underline',
+      fontSize: 25,
       fontWeight: FONT.bold,
       marginBottom: SIZES.medium,
-      marginLeft: 90,
+      marginTop: SIZES.medium,
+      fontWeight: 'bold',
+      color: COLORS.primary,
+      textDecorationLine: 'underline',
+    },
+    flatListContent: {
+      paddingBottom: 20,
+    },
+    itemsContainer: {
+      padding: SIZES.small,
+      backgroundColor: COLORS.white,
+      borderRadius: SIZES.small,
+      marginBottom: SIZES.small,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.3,
+      shadowRadius: 1,
+    },
+    itemsText: {
+      fontSize: SIZES.medium,
     },
     createButton: {
       width: 300,
@@ -25,18 +42,11 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       alignItems: 'center',
       marginBottom: 10,
-      marginLeft: 70,
+      marginLeft: 10,
     },
     createButtonText: {
       color: COLORS.white,
       fontSize: 16,
-      fontWeight: 'bold',
-    },
-    label: {
-      width: "500%",
-      fontSize: 18,
-      marginBottom: 20,
-      marginTop: 5,
       fontWeight: 'bold',
     },
   });
